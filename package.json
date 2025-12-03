@@ -1,5 +1,5 @@
 {
-    "name": "kequapp",
+    "name": "@kequtech/kequapp",
     "version": "0.13.5",
     "description": "A minimal, zero-magic Node web framework built on native APIs",
     "type": "module",
@@ -27,12 +27,12 @@
         "README.md"
     ],
     "bugs": {
-        "url": "https://github.com/Kequc/kequapp/issues"
+        "url": "https://github.com/kequtech/kequapp/issues"
     },
     "homepage": "https://kequapp.kequtech.com",
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/Kequc/kequapp.git"
+        "url": "git+ssh://git@github.com/kequtech/kequapp.git"
     },
     "author": "Nathan Lunde-Berry",
     "license": "ISC",
