@@ -1,5 +1,4 @@
-import { createAction, createApp, createBranch, Ex } from '../../src/index.ts'; // 'kequapp'
-import { silentLogger } from '../../src/util/logger.ts';
+import { createAction, createApp, createBranch, Ex, silentLogger } from '../../src/index.ts'; // 'arbor'
 
 const loggedIn = createAction(({ req, context }) => {
     if (req.headers.authorization !== 'mike') {

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { createGetBody } from '../../src/body/create-get-body.ts';
-import { FakeReq } from '../../src/util/fake-http.ts';
+import { FakeReq } from '../../src/utils/fake-http.ts';
 
 describe('createGetBody', () => {
     it('throws when a required field is missing (default throws = true)', async () => {

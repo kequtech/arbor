@@ -1,6 +1,6 @@
-import { unknownToEx } from '../built-in/tools/ex.ts';
+import { unknownToEx } from '../ex.ts';
 import type { Bundle, Logger, RendererData, Route } from '../types.ts';
-import { findErrorHandler, findRenderer } from './find.ts';
+import { findErrorHandler, findRenderer } from './tools/find.ts';
 
 export async function renderRoute(route: Route, bundle: Bundle): Promise<void> {
     const { res, methods } = bundle;

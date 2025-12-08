@@ -1,10 +1,10 @@
-import { Ex } from '../built-in/tools/ex.ts';
+import { logger } from '../built-in/logger.ts';
+import { Ex } from '../ex.ts';
 import type { Branch, BranchData, Route, Router } from '../types.ts';
-import { logger } from '../util/logger.ts';
-import { validateBranch } from '../util/validate.ts';
-import { createRegexp } from './create-regexp.ts';
-import { cacheBranches, cacheRoutes } from './util/cacher.ts';
-import { matchGroups } from './util/extract.ts';
+import { validateBranch } from '../utils/validate.ts';
+import { cacheBranches, cacheRoutes } from './tools/cacher.ts';
+import { createRegexp } from './tools/create-regexp.ts';
+import { matchGroups } from './tools/extract.ts';
 
 export function createRouter(structure: BranchData): Router {
     validateBranch(structure);

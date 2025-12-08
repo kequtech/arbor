@@ -1,5 +1,5 @@
 import type { BodyJson, BodyJsonValue, FilePart, RawPart } from '../../types.ts';
-import { headerAttributes } from '../../util/header-attributes.ts';
+import { headerAttributes } from '../../utils/header-attributes.ts';
 
 export function parseMultipart(parts: RawPart[]): [BodyJson, FilePart[]] {
     const result: BodyJson = {};

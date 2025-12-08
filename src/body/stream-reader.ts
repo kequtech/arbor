@@ -1,5 +1,5 @@
 import type { Readable } from 'node:stream';
-import { Ex } from '../built-in/tools/ex.ts';
+import { Ex } from '../ex.ts';
 
 export function streamReader(stream: Readable, maxPayloadSize = Infinity): Promise<Buffer> {
     return new Promise((resolve, reject) => {

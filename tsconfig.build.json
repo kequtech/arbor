@@ -1,0 +1,31 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        // Actually emit JS
+        "noEmit": false,
+        "outDir": "./dist",
+        "rootDir": "./src",
+
+        // Node ESM layout
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+
+        // Declarations for consumers
+        "declaration": true,
+        "emitDeclarationOnly": false,
+        "declarationMap": false,
+
+        // IMPORTANT: let TS rewrite the extensions in output
+        "rewriteRelativeImportExtensions": true,
+        "allowImportingTsExtensions": true,
+
+        // Let TS normalize imports/exports in emitted JS
+        "verbatimModuleSyntax": false,
+
+        // Extra hygiene
+        "stripInternal": true,
+        "newLine": "lf"
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["test", "**/*.test.ts"]
+}

@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
-import type { FakeReq, FakeRes } from './util/fake-http.ts';
+import type { FakeReq, FakeRes } from './utils/fake-http.ts';
 
 export type LoggerFn = (...params: unknown[]) => void;
 export interface Logger {
@@ -95,6 +95,11 @@ export interface ReqOptions extends Record<string, any> {
     body?: unknown;
 }
 
+export interface TestBundleOptions extends ReqOptions {
+    params?: Record<string, string>;
+    context?: BundleContext;
+}
+
 export interface GetResponseOptions {
     raw?: boolean;
 }
@@ -132,7 +137,7 @@ export interface RouteData {
     method: string;
     url?: Pathname;
     actions?: Action[];
-    logger?: Partial<Logger>;
+    logger?: Logger;
     autoHead?: boolean;
 }
 export interface BranchData extends Omit<RouteData, 'method'> {
@@ -156,7 +161,7 @@ export interface CacheBranch {
     errorHandlers: ErrorHandlerData[];
     renderers: RendererData[];
     autoHead?: boolean;
-    logger?: Partial<Logger>;
+    logger?: Logger;
 }
 export interface CacheRoute extends CacheBranch {
     method: string;

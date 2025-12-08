@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
+import { inject } from '../../src/built-in/inject.ts';
+import { silentLogger } from '../../src/built-in/logger.ts';
 import {
     createAction,
     createApp,
@@ -8,8 +10,6 @@ import {
     createRenderer,
     createRoute,
 } from '../../src/router/modules.ts';
-import { silentLogger } from '../../src/util/logger.ts';
-import { inject } from '../../src/built-in/tools/inject.ts';
 
 describe('createApp', () => {
     it('accepts actions', () => {

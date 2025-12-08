@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { createGetResponse } from '../../src/body/create-get-response.ts';
-import { FakeRes } from '../../src/util/fake-http.ts';
+import { FakeRes } from '../../src/utils/fake-http.ts';
 
 describe('createGetResponse', () => {
     it('parses text responses', async () => {

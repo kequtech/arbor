@@ -1,7 +1,8 @@
-export { sendFile } from './built-in/helpers/send-file.ts';
-export { staticDirectory } from './built-in/helpers/static-directory.ts';
-export { Ex, unknownToEx } from './built-in/tools/ex.ts';
-export { inject } from './built-in/tools/inject.ts';
+export { createTestBundle } from './built-in/create-test-bundle.ts';
+export { inject } from './built-in/inject.ts';
+export { logger, silentLogger } from './built-in/logger.ts';
+export { sendFile } from './built-in/send-file.ts';
+export { staticDirectory } from './built-in/static-directory.ts';
+export { Ex, unknownToEx } from './ex.ts';
 export * from './router/modules.ts';
-export { FakeReq, FakeRes } from './util/fake-http.ts';
 export * from './types.ts';

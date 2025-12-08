@@ -1,9 +1,9 @@
 import type { IncomingMessage } from 'node:http';
 import type { Readable } from 'node:stream';
 import zlib from 'node:zlib';
-import { Ex } from '../built-in/tools/ex.ts';
+import { Ex } from '../ex.ts';
 import type { GetBody, GetBodyOptions, RawPart } from '../types.ts';
-import type { FakeReq } from '../util/fake-http.ts';
+import type { FakeReq } from '../utils/fake-http.ts';
 import { createParseBody, parseJson, parseUrlEncoded } from './create-parse-body.ts';
 import { parseMultipart } from './multipart/parse-multipart.ts';
 import { splitMultipart } from './multipart/split-multipart.ts';

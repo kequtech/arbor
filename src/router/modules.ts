@@ -7,7 +7,7 @@ import {
     validateRenderer,
     validateRoute,
     validateType,
-} from '../util/validate.ts';
+} from '../utils/validate.ts';
 import { createRouter } from './create-router.ts';
 import { requestProcessor } from './request-processor.ts';
 

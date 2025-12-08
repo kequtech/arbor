@@ -1,6 +1,6 @@
-import { Ex } from '../../built-in/tools/ex.ts';
+import { Ex } from '../../ex.ts';
 import type { Params, RawPart } from '../../types.ts';
-import { headerAttributes } from '../../util/header-attributes.ts';
+import { headerAttributes } from '../../utils/header-attributes.ts';
 
 const CR = 0x0d;
 const LF = 0x0a;

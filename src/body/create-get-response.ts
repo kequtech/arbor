@@ -1,7 +1,7 @@
 import type { ServerResponse } from 'node:http';
 import type { Readable } from 'node:stream';
 import type { GetResponse, GetResponseOptions, RawPart } from '../types.ts';
-import type { FakeRes } from '../util/fake-http.ts';
+import type { FakeRes } from '../utils/fake-http.ts';
 import { createParseBody, parseJson } from './create-parse-body.ts';
 import { streamReader } from './stream-reader.ts';
 

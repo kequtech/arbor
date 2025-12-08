@@ -1,8 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
-import { createGetBody } from '../body/create-get-body.ts';
+import type { Router } from '../types.ts';
 import { renderError, renderRoute } from './actions.ts';
-import { createCookies } from './create-cookies.ts';
-import type { Bundle, Router } from '../types.ts';
+import { createBundle } from './create-bundle.ts';
 
 export async function requestProcessor(
     router: Router,
@@ -13,18 +12,8 @@ export async function requestProcessor(
     const url = new URL(req.url || '/', `${req.headers.protocol}://${req.headers.host}`);
     const method = req.method || 'GET';
     const [route, params, methods] = router(method, url.pathname);
+    const bundle = createBundle(req, res, params, methods);
     const { logger } = route;
-
-    const bundle: Bundle = Object.freeze({
-        req,
-        res,
-        url,
-        context: {},
-        params,
-        methods,
-        cookies: createCookies(req, res),
-        getBody: createGetBody(req),
-    });
 
     try {
         await renderRoute(route, bundle);
@@ -41,5 +30,5 @@ export async function requestProcessor(
         res.end();
     }
 
-    logger.info(res.statusCode, Date.now() - startedAt, method, url.pathname);
+    logger.info(res.statusCode, Date.now() - startedAt, method, url.pathname + url.search);
 }

@@ -1,19 +1,19 @@
 import assert from 'node:assert/strict';
 import { it } from 'node:test';
 import {
+    createAction,
     createApp,
     createBranch,
-    createRoute,
-    createAction,
     createErrorHandler,
     createRenderer,
+    createRoute,
     Ex,
-    unknownToEx,
     inject,
-    FakeReq,
-    FakeRes,
+    logger,
     sendFile,
+    silentLogger,
     staticDirectory,
+    unknownToEx,
 } from '../src/index.ts';
 
 it('exports a lot of stuff', () => {
@@ -26,8 +26,8 @@ it('exports a lot of stuff', () => {
     assert.equal(typeof Ex, 'object');
     assert.equal(typeof unknownToEx, 'function');
     assert.equal(typeof inject, 'function');
-    assert.equal(typeof FakeReq, 'function');
-    assert.equal(typeof FakeRes, 'function');
     assert.equal(typeof sendFile, 'function');
     assert.equal(typeof staticDirectory, 'function');
+    assert.equal(typeof logger, 'object');
+    assert.equal(typeof silentLogger, 'object');
 });

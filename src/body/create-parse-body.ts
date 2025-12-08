@@ -1,4 +1,4 @@
-import { Ex } from '../built-in/tools/ex.ts';
+import { Ex } from '../ex.ts';
 import type { BodyJson, RawPart } from '../types.ts';
 
 type Parser = (body: RawPart) => any;

@@ -1,121 +1,95 @@
-<img alt="kequapp" src="https://github.com/kequtech/kequapp/blob/main/logo.png?raw=true" width="370" height="95" />
+<img alt="Arbor" src="https://github.com/kequtech/arbor/blob/main/arbor-logo-600.png?raw=true" width="300" />
 
-# Kequapp
+# Arbor
 
-**A minimal, zero-magic Node web framework built on native APIs.**
+**A minimal, modular Node.js framework for building fast, predictable web applications.**
 
-*\ \`hek-yü-ap \\*
+[![npm version](https://img.shields.io/npm/v/%40kequtech/arbor?color=2e7dd7)](https://www.npmjs.com/package/@kequtech/arbor)
+[![Node Version](https://img.shields.io/node/v/%40kequtech/arbor?color=2e7dd7)](#installation)
+[![License](https://img.shields.io/npm/l/%40kequtech/arbor?color=2e7dd7)](./LICENSE)
 
-[![npm version](https://img.shields.io/npm/v/%40kequtech/kequapp?color=2e7dd7)](https://www.npmjs.com/package/kequapp)
-[![Node Version](https://img.shields.io/node/v/%40kequtech/kequapp?color=2e7dd7)](#installation)
-[![License](https://img.shields.io/npm/l/%40kequtech/kequapp?color=2e7dd7)](./LICENSE)
-
----
-### Why Kequapp?
-
-Kequapp emphasizes *clarity* and *explicit control* with a minimal surface area:
-
-* **Zero Runtime Dependencies** – Uses only built‑in Node modules while still providing body parsing, cookies, and related helpers.
-* **ESM‑Only, Modern Target** – Distributed as standard ES modules with TypeScript support.
-* **Body and Cookie Helpers** – Utilities for parsing request bodies and cookies no middleware required.
-* **Hierarchical Routing** – Branches group routes and share common actions.
-* **Explicit Actions Pipeline** – Sequential functions; returning a value terminates execution and dispatches to the appropriate renderer.
-* **Content‑Type–Driven Rendering and Errors** – The `Content-Type` header determines which renderer or error handler is chosen.
-* **Correct CORS / OPTIONS Handling** – Automatically responds to `OPTIONS` with the exact allowed methods for the requested path; further customization via actions.
-* **Minimal, Predictable API** – Core factories: apps, branches, routes, actions, renderers, and error handlers with no hidden magic.
-
----
-### Core Factories
-
-| Factory | Description |
-| -------------------- | -------------------- |
-| `createApp` | Constructs the root `(req, res)` handler for direct use with `http.createServer()` (or any Node HTTP server). |
-| `createBranch` | Composes an additional set of routes under a common context. |
-| `createRoute` | Declares a HTTP route, method, URL pattern, and actions. |
-| `createAction` | Defines a pipeline step (async function supported) with typed context; return a value to finalize, throw to signal error handling. |
-| `createRenderer` | Registers a renderer for the given `Content-Type` when any action returns a value. |
-| `createErrorHandler` | Registers an error handler for the provided `Content-Type` which is invoked when any action throws an error. |
+Arbor gives you explicit control over your application: no hidden behaviors, no heavy abstractions and no configuration files posing as code.  
+Branches shape your URL space, routes define entry points and actions execute your logic in a simple, predictable chain. If you understand the request bundle and the flow of actions, you understand Arbor.
 
 ---
 
-### Installation
+## Installation
 
 ```bash
-npm install @kequtech/kequapp
-```
+npm i @kequtech/arbor
+````
 
-* **Node:** Current, modern Node is expected above 20.
-* **Module system:** ESM only.
+Requires **Node 20+**.
 
 ---
 
-### Hello World!
+## Quick Start
 
-```js
-import { createServer } from 'node:http';
-import { createApp } from '@kequtech/kequapp';
+A minimal Arbor app:
 
-const app = createApp({
-  routes: [
-    {
-      method: 'GET',
-      url: '/',
-      actions: [() => 'Hello world!'],
-    },
+```ts
+import { createApp, createRoute } from "@kequtech/arbor";
+
+const routeHello = createRoute({
+  method: "GET",
+  url: "/",
+  actions: [
+    () => "Hello, Arbor!",
   ],
 });
 
-createServer(app).listen(4000, () => {
-  console.log('Server running at http://localhost:4000');
+export default createApp({
+  routes: [routeHello],
 });
 ```
 
-Returning the string triggers a renderer selected by the current `Content-Type`. Because no header is set yet, the default resolves to `text/plain`.
+Run with any HTTP server that can accept a Node request listener:
 
-To emit JSON instead, set the header in the *actions* before returning a value:
+```ts
+import { createServer } from "node:http";
+import app from "./app";
 
-```js
-import { createApp, createBranch, createAction } from '@kequtech/kequapp';
-
-const actionSetHeaderJson = createAction(({ res }) => {
-  res.setHeader('Content-Type', 'application/json');
-});
-
-const branchApi = createBranch({
-  url: '/api',
-  actions: [actionSetHeaderJson],
-  routes: [
-    {
-      method: 'GET',
-      url: '/',
-      actions: [() => ({ message: 'Hello world!' })],
-    },
-  ],
-});
-
-const app = createApp({
-  branches: [branchApi],
-});
+createServer(app).listen(3000);
 ```
 
-The library comes with a renderer for `application/json` (as well as `text/*`) already built-in so this works without additional effort.
+Open:
+`http://localhost:3000` → **Hello, Arbor!**
 
 ---
 
-### Documentation
+## Documentation
 
-Extended guides and reference (renderers, error handling, content negotiation, advanced routing, body helpers, cookies):
+Full documentation is available at:
 
-**[https://kequapp.kequtech.com](https://kequapp.kequtech.com)**
+**[https://docs.kequtech.com/arbor](https://docs.kequtech.com/arbor)**
+
+It includes:
+
+* Core concepts (branches, routes, actions, body parsing, renderers, errors)
+* Guides for authentication, validation, testing and project structure
+* Detailed specifications for `getBody`, `Ex`, `staticDirectory`, `sendFile` and more
 
 ---
 
-### Upgrading
+## Philosophy
 
-Breaking changes and migration notes are tracked in the **[CHANGELOG](./CHANGELOG.md)**.
+Arbor is intentionally small:
+
+* No magic
+* No global configuration layers
+* No hidden middleware chains
+* No nested abstractions you must memorize
+
+Everything is explicit, composable and easy to trace.
 
 ---
 
-### License
+## Contributing
 
-ISC © Nathan Lunde-Berry
+Issues and pull requests are welcome. Arbor evolves pragmatically and contributions that preserve its clarity and simplicity are especially appreciated.
+
+---
+
+## License
+
+MIT © Kequtech Innovations Kft.

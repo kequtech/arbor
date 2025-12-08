@@ -1,5 +1,11 @@
-import { createAction, createApp, Ex, sendFile, staticDirectory } from '../../src/index.ts'; // 'kequapp'
-import { silentLogger } from '../../src/util/logger.ts';
+import {
+    createAction,
+    createApp,
+    Ex,
+    sendFile,
+    silentLogger,
+    staticDirectory,
+} from '../../src/index.ts'; // 'arbor'
 
 const PRIVATE = ['/private.txt'];
 

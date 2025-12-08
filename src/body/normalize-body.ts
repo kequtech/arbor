@@ -1,4 +1,4 @@
-import { Ex } from '../built-in/tools/ex.ts';
+import { Ex } from '../ex.ts';
 import type { BodyJson, BodyJsonValue, GetBodyOptions } from '../types.ts';
 
 export function normalizeBody(body: BodyJson, options: GetBodyOptions): BodyJson {

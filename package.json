@@ -1,7 +1,7 @@
 {
-    "name": "@kequtech/kequapp",
+    "name": "@kequtech/arbor",
     "version": "0.13.7",
-    "description": "A minimal, zero-magic Node web framework built on native APIs",
+    "description": "A minimal, modular Node.js framework for building fast and predictable web applications.",
     "type": "module",
     "exports": {
         ".": {
@@ -10,11 +10,11 @@
         }
     },
     "engines": {
-        "node": ">=20.10"
+        "node": ">=20.0.0"
     },
     "sideEffects": false,
     "scripts": {
-        "build": "rm -rf dist && tsc && node fix-dts.ts",
+        "build": "rm -rf dist && tsc -p tsconfig.build.json",
         "prepare": "npm run build",
         "start:basic": "node ./examples/basic/server.ts",
         "start:file-server": "node ./examples/file-server/server.ts",
@@ -27,12 +27,12 @@
         "README.md"
     ],
     "bugs": {
-        "url": "https://github.com/kequtech/kequapp/issues"
+        "url": "https://github.com/kequtech/arbor/issues"
     },
-    "homepage": "https://kequapp.kequtech.com",
+    "homepage": "https://docs.kequtech.com/arbor",
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/kequtech/kequapp.git"
+        "url": "git+ssh://git@github.com/kequtech/arbor.git"
     },
     "author": "Nathan Lunde-Berry",
     "license": "ISC",
@@ -49,6 +49,6 @@
     ],
     "devDependencies": {
         "@types/node": "^24.0.14",
-        "typescript": "^5.8.3"
+        "typescript": "^5.9.3"
     }
 }

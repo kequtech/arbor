@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { it } from 'node:test';
-import { inject } from '../../src/index.ts'; // 'kequapp'
+import { inject } from '../../src/index.ts'; // 'arbor'
 import app from './app.ts';
 
 it('reads parameters from the url', async () => {
