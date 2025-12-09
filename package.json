@@ -29,7 +29,7 @@
     "bugs": {
         "url": "https://github.com/kequtech/arbor/issues"
     },
-    "homepage": "https://docs.kequtech.com/arbor",
+    "homepage": "https://docs.kequtech.com/arbor/",
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/kequtech/arbor.git"

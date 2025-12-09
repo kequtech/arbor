@@ -92,4 +92,4 @@ Issues and pull requests are welcome. Arbor evolves pragmatically and contributi
 
 ## License
 
-MIT © Kequtech Innovations Kft.
+ISC © Kequtech Innovations Kft.
