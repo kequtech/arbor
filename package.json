@@ -1,6 +1,6 @@
 {
     "name": "@kequtech/arbor",
-    "version": "0.14.2",
+    "version": "0.14.3",
     "description": "A minimal, modular Node.js framework for building fast and predictable web applications.",
     "type": "module",
     "exports": {
